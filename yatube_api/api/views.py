@@ -5,7 +5,6 @@ from rest_framework import (
     permissions,
     viewsets
 )
-from rest_framework.response import Response
 
 from .permissions import AuthorOrReadOnly
 from .serializers import (
@@ -13,7 +12,6 @@ from .serializers import (
     FollowSerializer,
     GroupSerializer,
     PostSerializer
-    
 )
 from posts.models import Group, Post
 
