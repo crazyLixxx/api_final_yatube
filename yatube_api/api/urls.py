@@ -7,17 +7,17 @@ from .views import CommentViewSet, FollowViewSet, GroupViewSet, PostViewSet
 
 app_name = 'api'
 
-router = DefaultRouter()
-router.register('v1/posts', PostViewSet)
-router.register('v1/groups', GroupViewSet)
-router.register(
+router_v1 = DefaultRouter()
+router_v1.register('v1/posts', PostViewSet)
+router_v1.register('v1/groups', GroupViewSet)
+router_v1.register(
     r'v1/posts/(?P<post_id>\d+)/comments',
     CommentViewSet,
     basename='comments')
-router.register('v1/follow', FollowViewSet, basename='follow')
+router_v1.register(r'v1/follow', FollowViewSet, basename='follow')
 
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', include(router_v1.urls)),
     path('api-token-auth/', views.obtain_auth_token),
 ]
